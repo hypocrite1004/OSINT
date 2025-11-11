@@ -1,0 +1,177 @@
+# OSINT Collection Tool Configuration
+
+# General Settings
+general:
+  timeout: 30  # Request timeout in seconds
+  max_threads: 10  # Maximum concurrent threads
+  verbose: true  # Verbose output
+  output_format: "json"  # json, html, txt
+  save_results: true
+
+# Target Information
+target:
+  domain: ""  # Target domain (e.g., example.com)
+  ip: ""  # Target IP address
+  company: ""  # Company name
+
+# Module Enable/Disable Settings
+modules:
+  dns_enumeration: true
+  whois_lookup: true
+  subdomain_enumeration: true
+  port_scanning: true
+  web_technology_detection: true
+  email_harvesting: true
+  social_media_search: false
+  ip_geolocation: true
+  ssl_certificate_analysis: true
+  dns_zone_transfer: true
+  reverse_dns: true
+
+# Open Source Tools Configuration
+opensource_tools:
+  enabled: true  # Master switch for all open source tools
+
+  # Subdomain enumeration tools
+  sublist3r: false  # Requires installation
+  amass: false  # Requires installation
+  subfinder: false  # Requires installation
+
+  # Port scanning
+  nmap: false  # Requires installation
+  masscan: false  # Requires installation
+
+  # Web technology
+  whatweb: false  # Requires installation
+  wappalyzer: false  # Requires installation
+
+  # DNS tools
+  dig: true  # Usually pre-installed
+  nslookup: true  # Usually pre-installed
+
+  # Other tools
+  theharvester: false  # Email harvesting tool
+
+# External API Configuration
+external_apis:
+  enabled: true  # Master switch for all external APIs
+
+  # Shodan API (https://shodan.io)
+  shodan:
+    enabled: false
+    api_key: ""  # Add your API key
+
+  # VirusTotal API (https://virustotal.com)
+  virustotal:
+    enabled: false
+    api_key: ""  # Add your API key
+
+  # SecurityTrails API (https://securitytrails.com)
+  securitytrails:
+    enabled: false
+    api_key: ""  # Add your API key
+
+  # Hunter.io API (Email finding)
+  hunter:
+    enabled: false
+    api_key: ""  # Add your API key
+
+  # HaveIBeenPwned API
+  haveibeenpwned:
+    enabled: false
+    api_key: ""  # Add your API key (required for some features)
+
+  # IPInfo API
+  ipinfo:
+    enabled: false
+    api_key: ""  # Add your API key (optional, but increases rate limit)
+
+  # URLScan.io API
+  urlscan:
+    enabled: false
+    api_key: ""  # Add your API key
+
+  # Censys API
+  censys:
+    enabled: false
+    api_id: ""
+    api_secret: ""
+
+# Built-in Python Libraries (No external dependencies)
+builtin_modules:
+  enabled: true
+  dns_resolution: true
+  http_requests: true
+  ssl_analysis: true
+  whois_basic: true
+
+# Output Settings
+output:
+  directory: "./reports"
+  timestamp: true
+  formats:
+    - json
+    - html
+    - txt
+
+# Scanning Limits
+limits:
+  max_subdomains: 1000
+  max_ports: 1000
+  port_range: "1-1000"  # Common ports
+  common_ports: [21, 22, 23, 25, 53, 80, 110, 143, 443, 465, 587, 993, 995, 3306, 3389, 5432, 8080, 8443]
+
+# DNS Settings
+dns:
+  nameservers:
+    - "8.8.8.8"  # Google DNS
+    - "8.8.4.4"
+    - "1.1.1.1"  # Cloudflare DNS
+  record_types:
+    - A
+    - AAAA
+    - MX
+    - NS
+    - TXT
+    - CNAME
+    - SOA
+
+# Subdomain Wordlist
+subdomain_wordlist:
+  use_builtin: true
+  custom_wordlist: ""  # Path to custom wordlist
+  common_subdomains:
+    - www
+    - mail
+    - ftp
+    - admin
+    - webmail
+    - smtp
+    - pop
+    - ns1
+    - ns2
+    - vpn
+    - blog
+    - dev
+    - staging
+    - test
+    - api
+    - portal
+    - cloud
+    - shop
+    - store
+
+# User Agent
+user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+
+# Proxy Settings (Optional)
+proxy:
+  enabled: false
+  http: ""
+  https: ""
+
+# Rate Limiting
+rate_limiting:
+  enabled: true
+  requests_per_second: 5
+  delay_between_requests: 0.2  # seconds

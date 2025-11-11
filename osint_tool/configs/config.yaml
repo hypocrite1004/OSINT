@@ -52,6 +52,35 @@ opensource_tools:
   # Other tools
   theharvester: false  # Email harvesting tool
 
+# Integrated External OSINT Tools
+# These tools will be automatically invoked if installed
+integrated_tools:
+  enabled: true  # Master switch for integrated tools
+
+  # theHarvester - Email, subdomain, and host enumeration
+  theharvester:
+    enabled: false  # Auto-enabled if tool is installed
+    data_source: "all"  # all, google, bing, duckduckgo, etc.
+    timeout: 300  # seconds
+
+  # OWASP Amass - Advanced subdomain enumeration
+  amass:
+    enabled: false  # Auto-enabled if tool is installed
+    passive: true  # Use passive mode (no active scanning)
+    timeout: 600  # seconds
+
+  # Photon - Web crawler and information extractor
+  photon:
+    enabled: false  # Auto-enabled if tool is installed
+    depth: 2  # Crawl depth
+    timeout: 300  # seconds
+
+  # Sherlock - Social media account finder
+  sherlock:
+    enabled: false  # Auto-enabled if tool is installed
+    timeout: 300  # seconds
+    username: ""  # Username to search (can be set per-scan)
+
 # External API Configuration
 external_apis:
   enabled: true  # Master switch for all external APIs

@@ -70,3 +70,24 @@ jinja2>=3.1.2
 
 # Rate limiting
 ratelimit>=2.2.1
+
+# Integrated External OSINT Tools (Optional but Recommended)
+# Install these for enhanced functionality
+
+# theHarvester - Email and subdomain enumeration
+# Install: pip install theHarvester
+# Note: theHarvester has its own dependencies
+
+# Photon - Web crawler
+photon-python>=1.3.0  # Optional: Web crawling
+
+# Sherlock - Social media account finder
+# Install: pip install sherlock-project
+# Note: Installs as 'sherlock' command
+
+# OWASP Amass - Advanced subdomain enumeration
+# Install: See https://github.com/OWASP/Amass/blob/master/doc/install.md
+# Note: Amass is a Go binary, not a Python package
+
+# Installation commands for integrated tools:
+# pip install theHarvester photon-python sherlock-project

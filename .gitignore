@@ -43,6 +43,7 @@ reports/
 *.json
 *.html
 *.txt
+!requirements.txt  # Keep requirements.txt
 logs/
 *.log
 

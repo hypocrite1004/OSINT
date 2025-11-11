@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSINT Collection Tool - Web Interface</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🔍 OSINT Collection Tool</h1>
+                <p class="subtitle">Web-based Open Source Intelligence Gathering</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Scan Form -->
+            <section class="scan-section">
+                <div class="card">
+                    <h2>새 스캔 시작</h2>
+
+                    <form id="scanForm">
+                        <div class="form-group">
+                            <label for="target">대상 도메인 또는 IP 주소</label>
+                            <input
+                                type="text"
+                                id="target"
+                                name="target"
+                                placeholder="example.com 또는 8.8.8.8"
+                                required
+                            >
+                            <small>스캔할 대상의 도메인 이름 또는 IP 주소를 입력하세요</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label>스캔 모듈 선택</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="dns_enumeration" checked>
+                                    <span>DNS 정보 수집</span>
+                                    <small>DNS 레코드, 네임서버, MX 레코드</small>
+                                </label>
+
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="whois_lookup" checked>
+                                    <span>WHOIS 조회</span>
+                                    <small>도메인 등록 정보, 등록자, 만료일</small>
+                                </label>
+
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="subdomain_enumeration" checked>
+                                    <span>서브도메인 열거</span>
+                                    <small>브루트포스, CT 로그, API 활용</small>
+                                </label>
+
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="port_scanning" checked>
+                                    <span>포트 스캔</span>
+                                    <small>오픈 포트, 서비스 탐지</small>
+                                </label>
+
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="web_technology_detection" checked>
+                                    <span>웹 기술 스택 분석</span>
+                                    <small>웹 서버, 프레임워크, CMS 탐지</small>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" id="startScanBtn">
+                            <span class="btn-text">스캔 시작</span>
+                            <span class="btn-loader" style="display: none;">
+                                <span class="spinner"></span>
+                                스캔 중...
+                            </span>
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Scan Progress -->
+            <section class="progress-section" id="progressSection" style="display: none;">
+                <div class="card">
+                    <h2>스캔 진행 상황</h2>
+
+                    <div class="scan-info">
+                        <div class="info-item">
+                            <span class="label">대상:</span>
+                            <span class="value" id="scanTarget">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">상태:</span>
+                            <span class="value" id="scanStatus">
+                                <span class="status-badge status-running">초기화 중</span>
+                            </span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">스캔 ID:</span>
+                            <span class="value" id="scanId">-</span>
+                        </div>
+                    </div>
+
+                    <div class="progress-bar-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-text" id="progressText">0%</div>
+                    </div>
+
+                    <div class="logs-container">
+                        <h3>실시간 로그</h3>
+                        <div class="logs" id="logs">
+                            <div class="log-entry log-info">
+                                <span class="log-time">00:00:00</span>
+                                <span class="log-message">스캔 시작 대기 중...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons" id="actionButtons" style="display: none;">
+                        <button class="btn btn-success" id="viewResultsBtn">
+                            결과 보기
+                        </button>
+                        <button class="btn btn-secondary" id="downloadJsonBtn">
+                            JSON 다운로드
+                        </button>
+                        <button class="btn btn-secondary" id="downloadHtmlBtn">
+                            HTML 다운로드
+                        </button>
+                        <button class="btn btn-outline" id="newScanBtn">
+                            새 스캔
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Scans -->
+            <section class="history-section">
+                <div class="card">
+                    <h2>최근 스캔</h2>
+                    <div class="scans-list" id="scansList">
+                        <div class="empty-state">
+                            <p>아직 스캔 기록이 없습니다</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>OSINT Collection Tool - 승인된 보안 테스트 및 교육 목적으로만 사용하세요</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

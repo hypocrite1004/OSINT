@@ -1,0 +1,72 @@
+# OSINT Collection Tool - Required Python Packages
+
+# Core Dependencies
+requests>=2.31.0
+PyYAML>=6.0.1
+colorama>=0.4.6
+
+# Web Interface (Flask)
+Flask>=3.0.0
+Flask-CORS>=4.0.0
+
+# DNS and Network
+dnspython>=2.4.2
+python-whois>=0.8.0
+
+# Web Scraping and Analysis
+beautifulsoup4>=4.12.2
+lxml>=4.9.3
+
+# SSL/TLS Analysis
+pyOpenSSL>=23.2.0
+cryptography>=41.0.4
+
+# Email Validation
+email-validator>=2.0.0
+
+# IP Geolocation (without API)
+geoip2>=4.7.0  # Requires MaxMind database
+
+# HTTP/HTTPS
+urllib3>=2.0.5
+
+# JSON handling
+jsonschema>=4.19.1
+
+# Progress bars
+tqdm>=4.66.1
+
+# Command-line interface
+argparse>=1.4.0
+tabulate>=0.9.0
+
+# Threading
+concurrent-futures>=3.1.1; python_version < '3.2'
+
+# Date/Time
+python-dateutil>=2.8.2
+
+# Regular expressions (built-in but listing for documentation)
+# re - built-in
+
+# Socket operations (built-in)
+# socket - built-in
+
+# Optional: For advanced features
+# If you want to use Shodan
+# shodan>=1.31.0
+
+# If you want to use VirusTotal API
+# vt-py>=0.17.5
+
+# If you want subdomain enumeration with Sublist3r-like functionality
+# requests-futures>=1.0.1
+
+# For HTML report generation
+jinja2>=3.1.2
+
+# For CSV export
+# csv - built-in
+
+# Rate limiting
+ratelimit>=2.2.1
